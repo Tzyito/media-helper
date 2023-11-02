@@ -8,6 +8,7 @@
 
 import { DownloadEvent } from "@/contant/invoke";
 import { Ref } from "vue";
+import { DownloadResult } from "../../../types/node/download";
 const win: any = window;
 class System {
   on(event: string, cb: (...arg: any) => any) {
@@ -22,11 +23,21 @@ class System {
   }
 }
 
-export const downloadVideo = (url: string, r: Ref): void => {
+export const downloadVideo = (
+  url: string,
+  r: Ref<DownloadResult>,
+  loading: Ref<boolean>
+): void => {
   const system = new System();
   system.on(DownloadEvent.DownloadVideo, (result) => {
     const [_, arr] = result;
+    console.log("arr: ", arr);
     r.value = arr;
+    if (r.value?.progress === 100) {
+      loading.value = false;
+    } else {
+      loading.value = true;
+    }
   });
   system.downloadVideo(url);
 };

@@ -10,6 +10,7 @@ import { dialog, ipcMain, shell } from "electron";
 import * as path from "path";
 import { DownloadEvent, SystemEvent } from "./contant/invoke";
 import { YtDlp } from "./python";
+import { DownloadResult } from "../types/node/download";
 
 let win;
 const createWindow = () => {
@@ -48,7 +49,7 @@ const createWindow = () => {
         folderPath: targetPath,
       });
     }
-    let result = {
+    let result: DownloadResult = {
       progress: 0,
       totalSize: 0,
       downloadSpeed: 0,
@@ -64,7 +65,7 @@ const createWindow = () => {
       const folderMatch = data.match(/\[download\] Destination: (.*)/);
       if (!downloadMatch) return;
       if (progressMatch) {
-        result.progress = progressMatch[1];
+        result.progress = +progressMatch[1];
         result.totalSize = progressMatch[2];
         result.downloadSpeed = progressMatch[4];
         console.log(

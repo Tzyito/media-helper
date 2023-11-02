@@ -13,7 +13,8 @@
         }
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "tyeps/**/*.ts"
     ],
     "exclude": [
         "node_modules",
