@@ -1,0 +1,21 @@
+body {
+  font-size: 16px;
+  background-color: var(--m-bg-color);
+  color: var(--m-text-color);
+}
+:root {
+  --m-bg-color: #f5f5f5;
+  --m-second-color: #e0e0e0;
+  --m-text-color: #333333;
+  --m-accent-color: #ff4081;
+  --m-link-color: #303f9f;
+  --m-container-color: #141718;
+}
+.dark {
+  --m-bg-color: #141718;
+  --m-second-color: #24292e;
+  --m-text-color: #c9d1d9;
+  --m-accent-color: #f78166;
+  --m-link-color: #539bf5;
+  --m-container-color: #f5f5f5;
+}

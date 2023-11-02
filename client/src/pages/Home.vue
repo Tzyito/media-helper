@@ -1,6 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import SideBar from "@/components/SideBar/SideBar.vue";
+</script>
 <template>
-  <div h-full w-full>
-    <div h-full w-20>首页</div>
+  <div h-screen w-full flex>
+    <side-bar></side-bar>
+    <div mt-4 mx-4 p-10 bg="[var(--m-second-color)]" w-full rounded-t-4>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
