@@ -35,7 +35,7 @@
     "install:all": "pnpm && cd server && pnpm && cd ../client && pnpm && cd ../",
     "run:web": "pnpm -C client dev",
     "build:front": "pnpm -C client build",
-    "build": "tsc && cp -r src/python/yt-dlp dist/python",
+    "build": "tsc && cp -r src/python/yt-dlp_mac dist/python",
     "watch": "tsc -w",
     "play": "electron ./dist/perview.js",
     "dev": "run-p run:web build play",
