@@ -6,19 +6,8 @@
  * @Description:
  */
 
-import { contextBridge, ipcRenderer } from "electron";
+import { contextBridge } from "electron";
+import { InvokeMethods } from "./container-resource/action-manager/invoke";
 (() => {
-  contextBridge.exposeInMainWorld("system", {
-    downloadVideo: (url: string) => {
-      ipcRenderer.send("downloadVideo", url);
-    },
-    openFolder: (folder: string) => {
-      ipcRenderer.send("openFolder", folder);
-    },
-    on: (event, cb) => {
-      ipcRenderer.on(event, (...args) => {
-        cb(args);
-      });
-    },
-  });
+  contextBridge.exposeInMainWorld("system", InvokeMethods);
 })();
