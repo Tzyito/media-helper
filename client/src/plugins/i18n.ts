@@ -8,6 +8,12 @@ const zh = {
   },
   download: {
     inputTextPlaceholder: "输入资源链接，启动魔法! 🧙",
+    downloadInfo: {
+      progress: "下载进度：",
+      speed: "下载速率：",
+      down_success: "文件下载成功!",
+      img_err: "暂不支持缩略图",
+    },
   },
 };
 const en = {
@@ -18,6 +24,12 @@ const en = {
   },
   download: {
     inputTextPlaceholder: "Enter the resource link to start the magic! 🧙",
+    downloadInfo: {
+      progress: "Progress：",
+      speed: "Speed：",
+      down_success: "File download successful!",
+      img_err: "Thumbnails are not supported yet",
+    },
   },
 };
 const i18n = createI18n({

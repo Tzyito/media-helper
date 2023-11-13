@@ -5,7 +5,7 @@ import App from "./App.vue";
 /** load style */
 import "virtual:uno.css";
 import "@unocss/reset/tailwind.css";
-import "@/assets/styles/global.css";
+import "@/assets/styles/global.scss";
 
 const app = createApp(App);
 /** 加载全局插件 */

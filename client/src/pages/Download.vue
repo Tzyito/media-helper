@@ -13,8 +13,9 @@ const mediaList: Ref<Ref<DownloadResult>[]> = ref([]);
 const hasFocused = ref(false);
 const loading = ref(false);
 // const a = "https://www.youtube.com/watch?v=sRs2o36a1Us&ab_channel=DrakeVEVO";
-const handleDownload = () => {
-  if (loading.value) return;
+const handleDownload = async () => {
+  console.log("loading.value", loading.value);
+  if (loading.value || !url.value) return;
   loading.value = true;
   const temp = ref<any>({
     progress: 0,
@@ -23,8 +24,10 @@ const handleDownload = () => {
     folder: "",
     cover: "",
   });
+  const success = await downloadVideo(url.value, temp, loading);
+  console.log("success:", success);
+  if (!success) return;
   mediaList.value.push(temp);
-  downloadVideo(url.value, temp, loading);
   url.value = "";
 };
 const a = ref({ a: 1 });
@@ -66,8 +69,8 @@ const handleOpen = (path: string) => {
         </template>
       </q-input>
     </div>
-    <div h="170" mt-10>
-      <div grid="~ gap2">
+    <div h="170" mt-10 overflow-y-auto p-5>
+      <div grid="~ gap4" grid-cols="5">
         <q-card
           v-for="(item, index) in mediaList"
           :key="index"
@@ -77,7 +80,7 @@ const handleOpen = (path: string) => {
           transition-all
         >
           <div h-30 bg-white leading-30 text-center text-black text-4>
-            暂不支持缩略图
+            {{ t("download.downloadInfo.img_err") }}
           </div>
           <q-linear-progress
             size="sm"
@@ -85,12 +88,18 @@ const handleOpen = (path: string) => {
           />
           <q-card-section>
             <template v-if="Number(item.value.progress) !== 100">
-              <div>下载进度：{{ item.value.progress }}%</div>
-              <div>下载速率：{{ item.value.downloadSpeed }}</div>
+              <div>
+                <span>{{ t("download.downloadInfo.progress") }}</span>
+                <span>{{ item.value.progress }}%</span>
+              </div>
+              <div>
+                <span>{{ t("download.downloadInfo.speed") }}</span>
+                <span>{{ item.value.downloadSpeed }}</span>
+              </div>
             </template>
             <template v-else>
               <div flex="~ col" justify-center items-center>
-                <span mb-2>文件下载成功!</span>
+                <span mb-2>{{ t("download.downloadInfo.down_success") }}</span>
                 <q-btn
                   color="primary"
                   @click="handleOpen(item.value.folder)"
