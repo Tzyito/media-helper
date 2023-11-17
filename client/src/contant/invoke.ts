@@ -15,4 +15,5 @@ export enum IpcRenderChannel {
 
 export enum DownloadEvent {
   DownloadVideo = "downloadVideo",
+  DownloadProgress = "downloadProgress",
 }

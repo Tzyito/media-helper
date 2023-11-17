@@ -47,11 +47,12 @@ export const downloadVideo = async (
         loading.value = true;
       }
     };
-    system.on(DownloadEvent.DownloadVideo, handler);
+    system.on(DownloadEvent.DownloadProgress, handler);
     try {
       console.log("等待获取路径");
       const res = await system.downloadVideo(url, timestamp);
       if (res.code === -1) {
+      if (res?.code === -1) {
         Notify.create({
           position: "bottom",
           timeout: 1000,
@@ -60,7 +61,8 @@ export const downloadVideo = async (
           actions: [{ icon: "close", color: "white" }],
         });
         resolve(false);
-      } else resolve(true);
+      }
+      resolve(true);
       console.log("开始下载", res);
     } catch (e) {
       console.log("render catch: ", e);

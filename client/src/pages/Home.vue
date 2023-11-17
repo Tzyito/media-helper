@@ -4,7 +4,15 @@ import SideBar from "@/components/SideBar/SideBar.vue";
 <template>
   <div h-screen w-full flex overflow-hidden>
     <side-bar></side-bar>
-    <div mt-4 mx-4 p-10 bg="[var(--m-second-color)]" w-full rounded-t-4>
+    <div
+      mt-4
+      mx-4
+      p-10
+      bg="[var(--m-second-color)]"
+      w-full
+      rounded-t-4
+      relative
+    >
       <router-view></router-view>
     </div>
   </div>

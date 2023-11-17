@@ -1,5 +1,5 @@
 import { type App } from "vue";
-import { Notify, Quasar } from "quasar";
+import { Notify, Quasar, Dialog } from "quasar";
 // Import icon libraries
 import "@quasar/extras/material-icons/material-icons.css";
 
@@ -10,6 +10,7 @@ export default function loadImgPerview(app: App) {
   app.use(Quasar, {
     plugins: {
       Notify,
+      Dialog,
     },
   });
 }

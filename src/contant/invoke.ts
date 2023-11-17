@@ -4,4 +4,5 @@ export enum SystemEvent {
 
 export enum DownloadEvent {
   DownloadVideo = "downloadVideo",
+  DownloadProgress = "downloadProgress",
 }

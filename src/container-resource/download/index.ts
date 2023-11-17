@@ -39,7 +39,7 @@ export const downloadDlp = (folderPaths, url, id) => {
       console.log(folderMatch[1]);
       result.folder = folderMatch[1];
     }
-    win.webContents.send(DownloadEvent.DownloadVideo, result, id);
+    win.webContents.send(DownloadEvent.DownloadProgress, result, id);
 
     // 可以根据需要解析其他信息，如标题、时长等
   });
