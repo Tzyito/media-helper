@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import Logo from "@/assets/logo.jpeg";
+import Logo from "@/assets/logo.png";
 </script>
 <template>
-  <div w-full h-20>
-    <img :src="Logo" object-contain w-full h-full />
+  <div w-20 h-20 mt-5 mx-auto>
+    <img :src="Logo" object-contain w-full h-full rounded-50 />
   </div>
 </template>
