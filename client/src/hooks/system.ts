@@ -51,7 +51,6 @@ export const downloadVideo = async (
     try {
       console.log("等待获取路径");
       const res = await system.downloadVideo(url, timestamp);
-      if (res.code === -1) {
       if (res?.code === -1) {
         Notify.create({
           position: "bottom",
