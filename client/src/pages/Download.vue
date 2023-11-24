@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { downloadVideo, openFileFolder } from "@/hooks/system";
-import { Ref, computed, ref } from "vue";
+import { Ref, computed, defineComponent, ref } from "vue";
 import useTranslation from "@/composiables/useI18n";
 import { DownloadResult } from "../../../types/node/download";
+import { useComponentDialog } from "@/composiables/useDialog";
 
 const { t } = useTranslation();
 const placeholder = computed(() => t("download.inputTextPlaceholder"));
@@ -30,6 +31,25 @@ const handleDownload = async () => {
   mediaList.value.push(temp);
   url.value = "";
 };
+const Components = defineComponent({
+  setup() {},
+});
+const handleOption = () => {
+  const dialog = useComponentDialog(
+    Components,
+    {},
+    {
+      class: "download-dialog",
+      title: "设置",
+      message: "配置下载参数",
+    }
+  );
+  dialog.onOk((data) => {
+    console.log("data", data);
+  });
+  return dialog;
+};
+
 const a = ref({ a: 1 });
 const state: Ref[] = [];
 state.push(a);
@@ -112,9 +132,16 @@ const handleOpen = (path: string) => {
       </div>
     </div>
   </div>
+  <div fixed right-10 bottom-10>
+    <q-btn round dense flat size="lg" icon="settings" @click.key="handleOption">
+    </q-btn>
+  </div>
 </template>
 <style lang="scss" scoped>
 :deep(.q-field--dense .q-field__label) {
   top: 4px !important;
+}
+.download-dialog {
+  box-shadow: none !important;
 }
 </style>
