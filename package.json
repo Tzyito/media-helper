@@ -45,16 +45,17 @@
     "package:win": "electron-packager . mediaHelper --platform=win32 --arch=x64  --out=./out --app-version=0.0.1 --overwrite --ignore=node_modules"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9",
-    "electron": "^21.2.0",
-    "electron-builder": "^23.6.0",
-    "electron-packager": "^17.1.1",
+    "@types/node": "^18.18.13",
+    "electron": "^27.1.2",
+    "electron-packager": "^17.1.2",
     "electron-reloader": "^1.2.3",
     "python-shell": "^5.0.0"
   },
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "node-fetch": "^2.6.6",
+    "dotenv": "^16.3.1",
+    "electron": "^27.1.2",
+    "electron-store": "^8.1.0",
+    "node-fetch": "^2.7.0",
     "npm-run-all": "^4.1.5"
   }
 }
