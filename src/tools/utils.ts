@@ -1,4 +1,5 @@
 import { platform } from "os";
+import { app } from "electron";
 export enum Platform {
   WIN32 = "win32",
   MAC = "darwin",
@@ -12,4 +13,7 @@ export const isLinux = () => {
 };
 export const isMacOS = () => {
   return platform() === Platform.MAC;
+};
+export const isDev = () => {
+  return !app.isPackaged;
 };

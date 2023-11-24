@@ -20,3 +20,11 @@ export function stringToUint8Array(str: string) {
   var tmpUint8Array = new Uint8Array(arr);
   return tmpUint8Array;
 }
+
+export function isPlainObject(variable) {
+  return (
+    typeof variable === "object" &&
+    variable !== null &&
+    !Array.isArray(variable)
+  );
+}

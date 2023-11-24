@@ -4,6 +4,7 @@
         "target": "es2019",
         "noImplicitAny": false,
         "sourceMap": true,
+        "esModuleInterop": true,
         "outDir": "./dist",
         "baseUrl": ".",
         "paths": {
