@@ -39,7 +39,7 @@ export const ActionManager = () => {
       throw new Error(`[${channelName}]ipc channel 已被注册！`);
     }
     ipcMain.on(channelName, async (_, ...args: any[]) => {
-      return await handle(_, ...args);
+      await handle(_, ...args);
     });
     channelPools.set(channelName, handle);
   }
