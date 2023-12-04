@@ -77,3 +77,12 @@ export const openFileFolder = (url: string) => {
     res(true);
   });
 };
+
+export const getConfigData = (key?: string) => {
+  return win.system.getSyncStoreConfig(key);
+};
+
+export const setConfigData = async (key: string, value: any) => {
+  const result = await win.system.setSyncStoreConfig(key, value);
+  console.log("result", result);
+};

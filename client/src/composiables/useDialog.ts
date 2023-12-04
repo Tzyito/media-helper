@@ -1,4 +1,7 @@
-import { Dialog, QDialogOptions, QOptionGroupProps } from "quasar";
+import { Dialog, QDialogOptions } from "quasar";
+import CustomDialog from "@/components/Dialog/index.vue";
+import { type Component } from "vue";
+import { DialogProps } from "@/components/Dialog/types";
 export function useDialog(options: QDialogOptions = {}) {
   const defaultConfig: QDialogOptions = {
     title: "Dialog",
@@ -12,16 +15,21 @@ export function useDialog(options: QDialogOptions = {}) {
   return instance;
 }
 
-export function useComponentDialog(
-  component: QDialogOptions["component"],
-  componentProps: Pick<QDialogOptions, "componentProps">,
+export function useComponentDialog<T>(
+  component: Component,
+  dialogProps: DialogProps,
+  innerProps: T,
   options: Omit<QDialogOptions, "component" | "componentProps"> = {}
 ) {
   const defaultConfig: QDialogOptions = {
-    component,
-    componentProps,
+    component: CustomDialog,
+    componentProps: {
+      component,
+      dialogProps,
+      innerProps,
+    },
   };
   const config = Object.assign(defaultConfig, options);
-  const dialog = useDialog(config);
+  const dialog = Dialog.create(config);
   return dialog;
 }
