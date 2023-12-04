@@ -1,15 +1,15 @@
 import { DownloadEvent } from "../../contant/invoke";
 import { YtDlp } from "../../python";
 import { getCurrentWindow } from "../../main";
+import { getConfigJsonArray } from "@/hooks";
 
 export const downloadDlp = (folderPaths, url, id) => {
   let targetPath = "";
   let instance = null;
   const win = getCurrentWindow();
   targetPath = folderPaths[0];
-  console.log("输出：", `${targetPath}/%(title)s.%(ext)s`);
   instance = new YtDlp(url, {
-    args: ["-o", `${targetPath}/%(title)s.%(ext)s`],
+    args: getConfigJsonArray(),
     folderPath: targetPath,
   });
   let result = {

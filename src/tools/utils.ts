@@ -17,3 +17,10 @@ export const isMacOS = () => {
 export const isDev = () => {
   return !app.isPackaged;
 };
+export function isPlainObject(variable) {
+  return (
+    typeof variable === "object" &&
+    variable !== null &&
+    !Array.isArray(variable)
+  );
+}

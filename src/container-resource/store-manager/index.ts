@@ -1,8 +1,10 @@
-import { isPlainObject } from "../../shared";
+import path from "node:path";
+import { isPlainObject } from "../../tools/utils";
 import Store from "electron-store";
+import { app } from "electron";
 
 export interface StoreProperty {
-  format: string;
+  output: string;
 }
 class StoreManager {
   private ytDlpConfig: Store<StoreProperty>;
@@ -14,18 +16,14 @@ class StoreManager {
     this.ytDlpConfig = new Store({
       name: "yt-dlp",
       defaults: {
-        format: "bv*",
+        output: `${app.getPath("downloads")}/%(title)s.%(ext)s`,
       },
     });
   }
 
   getConfig(key?: string, defaultValue?: any) {
     if (typeof key === "undefined" && typeof defaultValue === "undefined") {
-      console.log(
-        "this.ytDlpConfig.store: ",
-        JSON.stringify(this.ytDlpConfig.store.format)
-      );
-      return this.ytDlpConfig.store.format;
+      return this.ytDlpConfig.store;
     }
     return this.ytDlpConfig.get(key, defaultValue);
   }
